@@ -11,3 +11,7 @@ build
 Thumbs.db
 coverage
 .vercel
+.next/
+node_modules/
+.env
+.env*.local

@@ -19,7 +19,7 @@ function remotePatternFromUrl(rawUrl: string | undefined): RemotePattern | null 
 }
 const backendRemotePatterns: RemotePattern[] = [
     { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
-    { protocol: "https", hostname: "fleety-7p4o.onrender.com", pathname: "/**" },
+    { protocol: "https", hostname: process.env.NEXT_PUBLIC_IMAGE_HOSTNAME || "localhost", pathname: "/**" },
     { protocol: "http", hostname: "localhost", pathname: "/**" },
     { protocol: "http", hostname: "127.0.0.1", pathname: "/**" },
 ];
@@ -38,7 +38,7 @@ const nextConfig: NextConfig = {
         remotePatterns: backendRemotePatterns,
     },
     async rewrites() {
-        const backendUrl = process.env.API_REWRITE_DESTINATION || 'https://fleety-7p4o.onrender.com';
+        const backendUrl = process.env.API_REWRITE_DESTINATION || 'http://localhost:8000';
         return [
             {
                 source: '/api/:path((?!auth).*)',
