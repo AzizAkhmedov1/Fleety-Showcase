@@ -1,0 +1,34 @@
+export const authPanelBaseClass = "antialiased font-sans";
+export const authFormColumnClass = "bg-[#F8F9FA] dark:bg-zinc-950 transition-colors duration-300";
+export const authCardClass = "bg-white dark:bg-[#161616] rounded-[2rem] border border-zinc-100 dark:border-zinc-800/80 shadow-sm p-12 w-full max-w-[540px] antialiased transition-colors duration-300";
+export const authTitleClass = "text-zinc-900 dark:text-zinc-50 font-bold tracking-tight text-3xl antialiased font-sans";
+export const authSubtitleClass = "text-zinc-400 dark:text-zinc-400 text-sm mt-2 mb-8 max-w-sm leading-relaxed antialiased font-sans";
+export const authMarketingHeroTitleClass = "text-white text-5xl font-bold tracking-tight leading-tight mt-4 max-w-md antialiased font-sans";
+export const authMarketingHeroAccentClass = "text-[#2563EB]";
+export const authMarketingEyebrowClass = "text-xs font-semibold tracking-widest text-cyan-400 uppercase mt-12 block antialiased font-sans";
+export const authMarketingSubtitleClass = "text-zinc-300/90 text-sm leading-relaxed mt-4 max-w-sm antialiased font-sans";
+export const authMarketingFeatureIconClass = "bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-2.5 shrink-0 text-cyan-400";
+export const authMarketingFeatureTitleClass = "text-zinc-100 font-medium text-sm";
+export const authMarketingFeatureDescClass = "text-zinc-400/80 text-xs mt-0.5 leading-relaxed";
+export const fleetyWordmarkClass = "text-white text-3xl font-bold tracking-tight italic font-sans lowercase antialiased";
+export const authLabelClass = "text-zinc-900 dark:text-zinc-300 text-xs font-semibold tracking-wide mb-1.5 block antialiased";
+export const authInputIconClass = "pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400/60 dark:text-zinc-500 transition-all duration-300 ease-in-out";
+const authInputBase = (hasError?: boolean) => `w-full h-12 rounded-xl border text-sm outline-none transition-all antialiased bg-white text-zinc-900 placeholder:text-zinc-400 focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600 dark:bg-zinc-950 dark:border-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-600 dark:focus:bg-zinc-950 dark:focus:border-blue-600 dark:focus:ring-blue-600 ${hasError
+    ? "border-red-400 focus:border-red-400 focus:ring-red-500/30"
+    : "border-zinc-200"}`;
+export const authInputClass = (hasError?: boolean) => `${authInputBase(hasError)} pl-11 pr-4`;
+export const authInputPlainClass = (hasError?: boolean) => `${authInputBase(hasError)} px-4`;
+export const authMfaDigitInputClass = (hasError?: boolean) => `h-12 w-12 text-center text-xl font-bold rounded-xl border outline-none transition-all bg-white dark:bg-zinc-950 border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${hasError ? "border-red-400 focus:border-red-400 focus:ring-red-500/30" : ""}`;
+export const authMfaBackupKeyCardClass = "bg-zinc-50 dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-800/80 rounded-xl p-4 flex flex-col justify-between text-zinc-900 dark:text-zinc-100";
+export const authMfaQrPanelClass = "aspect-square rounded-2xl border-2 border-dashed border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 flex flex-col items-center justify-center gap-2 p-4";
+export const authPrimaryButtonClass = "w-full h-12 bg-[#1D4ED8] hover:bg-[#1E40AF] text-white font-semibold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm antialiased disabled:opacity-60 disabled:cursor-not-allowed";
+export const authPrimaryButtonStandaloneClass = `${authPrimaryButtonClass} mt-8`;
+export const authSecondaryButtonClass = "px-4 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 font-semibold text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-all inline-flex items-center justify-center gap-1 antialiased";
+export const authDividerClass = "flex items-center gap-3 mt-6";
+export const authDividerLineClass = "h-px flex-1 bg-zinc-200 dark:bg-zinc-800";
+export const authDividerTextClass = "text-xs font-medium text-zinc-400 dark:text-zinc-500 antialiased whitespace-nowrap";
+export const authSocialGridClass = "mt-6";
+export const authSocialButtonClass = "w-full h-11 px-4 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#161616] text-zinc-700 dark:text-zinc-200 font-medium text-xs rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-all flex items-center justify-center gap-2";
+export const authFooterLinkClass = "text-sm text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-all antialiased";
+export const authFooterLinkAccentClass = "font-semibold text-[#2563EB] hover:text-[#1D4ED8] transition-all antialiased";
+export const authErrorBannerClass = "mb-5 rounded-xl border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-950/40 px-4 py-3 text-sm font-medium text-red-700 dark:text-red-400 antialiased";

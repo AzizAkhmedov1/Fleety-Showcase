@@ -1,0 +1,1 @@
+export const SOCIAL_AUTH_BUTTON_CLASS = "w-full h-11 px-4 border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#161616] text-zinc-700 dark:text-zinc-200 font-medium text-xs rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-all flex items-center justify-center gap-2";

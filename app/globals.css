@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --shell-bg: #f4f4f5;
+    --shell-surface: #ffffff;
+    --shell-sidebar: #ffffff;
+    --shell-border: #e4e4e7;
+    --shell-text: #18181b;
+    --shell-text-muted: #71717a;
+    --scrollbar-thumb: rgba(63, 63, 70, 0.4);
+    --scrollbar-thumb-hover: rgba(113, 113, 122, 0.8);
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --shell-bg: #0b0b0b;
+    --shell-surface: #161616;
+    --shell-sidebar: #121212;
+    --shell-border: #242424;
+    --shell-text: #ffffff;
+    --shell-text-muted: #a3a3a3;
+    --scrollbar-thumb: rgba(63, 63, 70, 0.4);
+    --scrollbar-thumb-hover: rgba(113, 113, 122, 0.8);
+  }
+
+  body {
+    @apply bg-[var(--shell-bg)] text-[var(--shell-text)] antialiased;
+  }
+
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 9999px;
+    transition: background-color 0.2s ease;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+}
+
+/*
+ * Google Maps InfoWindow close button — html.dark color-scheme makes the
+ * native X mask render white-on-white. Force light chrome + explicit zinc icon.
+ */
+.gm-style .gm-style-iw-c,
+.gm-style-iw-c {
+  color-scheme: light !important;
+}
+
+.gm-style .gm-style-iw-chr button.gm-ui-hover-effect,
+.gm-style-iw-chr button.gm-ui-hover-effect {
+  opacity: 1 !important;
+  position: absolute !important;
+  width: 32px !important;
+  height: 32px !important;
+  top: 10px !important;
+  right: 12px !important;
+  border-radius: 6px !important;
+  transition: transform 0.15s ease, background-color 0.15s ease !important;
+}
+
+.gm-style .gm-style-iw-chr button.gm-ui-hover-effect > span,
+.gm-style-iw-chr button.gm-ui-hover-effect > span {
+  background-color: #a1a1aa !important; /* zinc-400 */
+  opacity: 1 !important;
+}
+
+.gm-style .gm-style-iw-chr button.gm-ui-hover-effect:hover,
+.gm-style-iw-chr button.gm-ui-hover-effect:hover {
+  transform: scale(1.1);
+  background-color: #f4f4f5 !important; /* zinc-100 */
+}
+
+.gm-style .gm-style-iw-chr button.gm-ui-hover-effect:hover > span,
+.gm-style-iw-chr button.gm-ui-hover-effect:hover > span {
+  background-color: #18181b !important; /* zinc-900 */
+}

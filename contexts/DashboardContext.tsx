@@ -1,0 +1,140 @@
+'use client';
+import { createContext, useContext, type RefObject } from 'react';
+import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import type { LoadManagementDatePreset } from '@/lib/fleet-financial-metrics';
+import type { LoadRecord, TeamDispatcher, TruckRecord, EtaBoardRow, DriverRecord, } from '@/lib/tms-api';
+import type { LoadStatusFilter } from '@/components/dashboard/load-management-types';
+import type { UpdateTruckPayload } from '@/components/fleet/TrailerStatusBoard';
+export interface DashboardContextValue {
+    drawerLoad: LoadRecord | null | undefined;
+    token: string | null;
+    trucks: TruckRecord[];
+    drivers: DriverRecord[];
+    customers: Array<{
+        id: number;
+        name: string;
+        mc?: string;
+        phone?: string;
+        email?: string;
+        rating?: string;
+        status?: string;
+    }>;
+    facilities: Array<{
+        id: number;
+        name: string;
+        type?: string;
+        address?: string;
+        hours?: string | null;
+        notes?: string;
+    }>;
+    setCustomers: React.Dispatch<React.SetStateAction<Array<{
+        id: number;
+        name: string;
+        mc?: string;
+        phone?: string;
+        email?: string;
+        rating?: string;
+        status?: string;
+    }>>>;
+    setFacilities: React.Dispatch<React.SetStateAction<Array<{
+        id: number;
+        name: string;
+        type?: string;
+        address?: string;
+        hours?: string | null;
+        notes?: string;
+    }>>>;
+    teamDispatchers: TeamDispatcher[];
+    teamDispatchersLoading: boolean;
+    canViewOperationalFinancials: boolean;
+    canViewNetProfit: boolean;
+    setActiveDrawerLoadId: React.Dispatch<React.SetStateAction<number | null>>;
+    refreshDashboard: () => Promise<void>;
+    currentUserId: number | null;
+    totalLoadsCount: number;
+    unassignedLoadsCount: number;
+    bookedLoadsCount: number;
+    inTransitCount: number;
+    deliveredCount: number;
+    delayedCount: number;
+    loadDateFilterMenuRef: RefObject<HTMLDivElement | null>;
+    isLoadDateMenuOpen: boolean;
+    setIsLoadDateMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    loadDatePreset: LoadManagementDatePreset;
+    loadDateFrom: string;
+    loadDateTo: string;
+    applyLoadDatePreset: (preset: LoadManagementDatePreset) => void;
+    handleLoadCustomDateChange: (field: 'start' | 'end', value: string) => void;
+    loadDateFilterButtonLabel: string;
+    loadStatusFilter: LoadStatusFilter;
+    setLoadStatusFilter: React.Dispatch<React.SetStateAction<LoadStatusFilter>>;
+    loadManagementView: 'active' | 'trash';
+    setLoadManagementView: React.Dispatch<React.SetStateAction<'active' | 'trash'>>;
+    timeRange: '30d' | 'all' | null;
+    analytics: {
+        monthly_gross: number;
+        monthly_net: number;
+        monthly_gross_rpm?: number;
+        monthly_rpm?: number;
+        monthly_net_rpm?: number;
+        monthly_fleet_miles?: number;
+        monthly_miles?: number;
+        monthly_loaded_miles?: number;
+        monthly_deadhead_miles?: number;
+    };
+    boardLoads: LoadRecord[];
+    boardLoadsLoading: boolean;
+    loadsPage: number;
+    loadsLimit: number;
+    loadsPagination: {
+        total_pages: number;
+        total_count: number;
+    };
+    setLoadsPage: React.Dispatch<React.SetStateAction<number>>;
+    setLoadsLimit: React.Dispatch<React.SetStateAction<number>>;
+    fetchData: () => Promise<void>;
+    activeDrawerLoadId: number | null;
+    activeBrokerViewId: number | null;
+    brokerProfileCustomer: DashboardContextValue['customers'][number] | null;
+    closeBrokerProfile: () => void;
+    activeDriverViewId: number | null;
+    closeDriverProfile: () => void;
+    activeTruckViewId: number | null;
+    closeTruckProfile: () => void;
+    openDriverProfileFromLoads: (driverId: number) => void;
+    openTruckProfileFromLoads: (truckId: number) => void;
+    openBrokerWorkspaceFromLoads: (customerId: number) => void;
+    activeLoads: LoadRecord[];
+    knownLoads: LoadRecord[];
+    fleetTrucks: TruckRecord[];
+    filteredFleetTrucks: TruckRecord[];
+    etaBoard: EtaBoardRow[];
+    router: AppRouterInstance;
+    searchQuery: string;
+    fleetMetrics: {
+        totalVehicles: number;
+        activeVehicles: number;
+        inTransit: number;
+        maintenanceDue: number;
+        outOfService: number;
+    };
+    fleetWindowStart: string;
+    fleetWindowEnd: string;
+    planningWindowStart: string;
+    planningWindowEnd: string;
+    handlePlanningWindowChange: (start: string, end: string) => void;
+    planningBoardRefreshKey: number;
+    setActiveDriverVault: (id: number | null) => void;
+    updatingTruckStatusId: number | null;
+    handleTruckStatusChange: (truckId: number, nextStatus: string) => Promise<void>;
+    handleAssetProfileClick: (truck: TruckRecord) => void;
+    updateTruck: (truckId: number, payload: UpdateTruckPayload) => Promise<void>;
+}
+export const DashboardContext = createContext<DashboardContextValue | null>(null);
+export function useDashboard(): DashboardContextValue {
+    const value = useContext(DashboardContext);
+    if (!value) {
+        throw new Error('useDashboard must be used within DashboardContext');
+    }
+    return value;
+}
